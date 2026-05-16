@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sobre animado</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  /* SOBRE */
+  #sobre {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: pointer;
+    transition: opacity 0.6s ease;
+  }
+
+  /* CARTA */
+  #carta {
+    width: 100%;
+    height: auto;
+    display: none;
+  }
+
+  /* Estado abierto */
+  .abierto #sobre {
+    display: none; /* 🔥 elimina el espacio blanco */
+  }
+
+  .abierto #carta {
+    display: block;
+  }
+
+</style>
+</head>
+<body>
+
+<picture id="sobre">
+  <source media="(max-width: 768px)" srcset="Sobre2.png">
+  <img src="Sobre.png" style="width:100%; height:auto; display:block; cursor:pointer;">
+</picture>
+<img id="carta" src="Carta.png">
+
+<script>
+const sobre = document.getElementById("sobre");
+
+sobre.onclick = () => {
+  document.body.classList.add("abierto");
+};
+
+// ✅ Detectar móvil correctamente
+function esMovil() {
+  return window.matchMedia("(max-width: 768px)").matches;
+}
+
+function ajustarImagen() {
+  const nuevaSrc = esMovil() ? "Sobre2.png" : "Sobre.png";
+  
+  // solo cambia si es diferente (evita bugs)
+  if (sobre.src.indexOf(nuevaSrc) === -1) {
+    sobre.src = nuevaSrc;
+  }
+}
+
+// Ejecutar al cargar
+ajustarImagen();
+
+// Ejecutar si cambian tamaño (por si rotan móvil)
+window.addEventListener("load", ajustarImagen);
+
+// Click para abrir
+sobre.onclick = () => {
+  document.body.classList.add("abierto");
+};
+</script>
+
+</body>
+</html>
