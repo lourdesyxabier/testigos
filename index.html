@@ -42,7 +42,7 @@
 <body>
 
 <picture id="sobre">
-  <source media="(max-width: 768px)" srcset="Sobre2.png">
+  <source media="(max-width: 768px)" srcset="Sobre3.png">
   <img src="Sobre.png" style="width:100%; height:auto; display:block; cursor:pointer;">
 </picture>
 <img id="carta" src="Carta.png">
@@ -60,7 +60,7 @@ function esMovil() {
 }
 
 function ajustarImagen() {
-  const nuevaSrc = esMovil() ? "Sobre2.png" : "Sobre.png";
+  const nuevaSrc = esMovil() ? "Sobre3.png" : "Sobre.png";
   
   // solo cambia si es diferente (evita bugs)
   if (sobre.src.indexOf(nuevaSrc) === -1) {
